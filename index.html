@@ -6,92 +6,122 @@
 <title>Redirecting to WhatsApp</title>
 
 <style>
-body {
-  margin: 0;
-  background: #000;
-  color: #fff;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Arial;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+
+body{
+margin:0;
+background:#000;
+color:#fff;
+font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial;
+display:flex;
+align-items:center;
+justify-content:center;
+height:100vh;
 }
 
-.container {
-  text-align: center;
+.container{
+text-align:center;
+max-width:320px;
 }
 
-.title {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 10px;
+.title{
+font-size:22px;
+font-weight:600;
+margin-bottom:10px;
 }
 
-.text {
-  color: #aaa;
-  margin-bottom: 30px;
+.subtitle{
+color:#aaa;
+margin-bottom:20px;
+line-height:1.5;
 }
 
-.button {
-  display: inline-block;
-  padding: 14px 28px;
-  border-radius: 10px;
-  color: #000;
-  background: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.2s;
+.timer{
+font-size:42px;
+font-weight:700;
+margin-bottom:20px;
 }
 
-.button:hover {
-  background: #111;
-  color: #fff;
-  border: 1px solid #fff;
+.button{
+display:inline-block;
+padding:14px 28px;
+border-radius:10px;
+background:#fff;
+color:#000;
+text-decoration:none;
+font-weight:600;
 }
 
-.spinner {
-  margin: 25px auto;
-  border: 3px solid #222;
-  border-top: 3px solid #fff;
-  border-radius: 50%;
-  width: 28px;
-  height: 28px;
-  animation: spin 1s linear infinite;
+.button:hover{
+background:#111;
+color:#fff;
+border:1px solid #fff;
 }
 
-@keyframes spin {
-  100% { transform: rotate(360deg); }
+.spinner{
+margin:20px auto;
+border:3px solid #222;
+border-top:3px solid #fff;
+border-radius:50%;
+width:28px;
+height:28px;
+animation:spin 1s linear infinite;
 }
+
+@keyframes spin{
+100%{transform:rotate(360deg);}
+}
+
 </style>
 
 <script>
-function openWhatsApp() {
 
-var phone = "971507383054";
+var phone="971507383054";
+var seconds=5;
 
-var isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+function updateTimer(){
 
-if(isMobile){
+document.getElementById("timer").innerHTML=seconds;
 
-window.location.href = "whatsapp://send?phone=" + phone;
+if(seconds==0){
 
-setTimeout(function(){
-
-window.location.href = "https://wa.me/" + phone;
-
-}, 1500);
+openWhatsApp();
 
 }else{
 
-window.location.href = "https://web.whatsapp.com/send?phone=" + phone;
+seconds--;
+setTimeout(updateTimer,1000);
 
 }
 
 }
+
+function openWhatsApp(){
+
+var isMobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+if(isMobile){
+
+window.location.href="whatsapp://send?phone="+phone;
+
+setTimeout(function(){
+
+window.location.href="https://wa.me/"+phone;
+
+},1500);
+
+}else{
+
+window.location.href="https://web.whatsapp.com/send?phone="+phone;
+
+}
+
+}
+
 </script>
 
 </head>
-<body>
+
+<body onload="updateTimer()">
 
 <div class="container">
 
@@ -99,21 +129,25 @@ window.location.href = "https://web.whatsapp.com/send?phone=" + phone;
 Redirecting to WhatsApp
 </div>
 
+<div class="subtitle">
+Redirecting to The Mr.Sekandar official WhatsApp app chat
+</div>
+
 <div class="spinner"></div>
 
-<div class="text">
-Click below if not opened automatically
+<div id="timer" class="timer">
+5
+</div>
+
+<div class="subtitle">
+seconds remaining
 </div>
 
 <a class="button" onclick="openWhatsApp()">
-Open WhatsApp
+Open Now
 </a>
 
 </div>
-
-<script>
-setTimeout(openWhatsApp, 1200);
-</script>
 
 </body>
 </html>
