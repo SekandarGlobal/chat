@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Redirecting to WhatsApp</title>
+<title>Sekandar Samadi — WhatsApp</title>
 
 <style>
 
@@ -18,134 +18,162 @@ justify-content:center;
 height:100vh;
 }
 
-.container{
+.card{
+
+background:#0a0a0a;
+border:1px solid #222;
+border-radius:20px;
+padding:30px;
+width:340px;
 text-align:center;
-max-width:320px;
+
+box-shadow:0 0 40px rgba(0,0,0,0.6);
+
 }
 
-.title{
+.profile{
+
+width:110px;
+height:110px;
+border-radius:50%;
+object-fit:cover;
+margin-bottom:15px;
+border:3px solid #25D366;
+
+}
+
+.name{
+
 font-size:22px;
 font-weight:600;
-margin-bottom:10px;
+
 }
 
-.subtitle{
+.badge{
+
+color:#25D366;
+margin-left:6px;
+
+}
+
+.role{
+
 color:#aaa;
-margin-bottom:20px;
-line-height:1.5;
+margin-top:5px;
+margin-bottom:15px;
+
 }
 
-.timer{
-font-size:42px;
-font-weight:700;
+.info{
+
+text-align:left;
+font-size:14px;
+color:#ccc;
+line-height:1.7;
 margin-bottom:20px;
+
+}
+
+.info b{
+
+color:#fff;
+
+}
+
+.business{
+
+color:#25D366;
+text-decoration:none;
+
 }
 
 .button{
-display:inline-block;
-padding:14px 28px;
-border-radius:10px;
-background:#fff;
+
+display:block;
+background:#25D366;
 color:#000;
+padding:15px;
+border-radius:12px;
 text-decoration:none;
 font-weight:600;
+font-size:16px;
+margin-top:10px;
+transition:0.2s;
+
 }
 
 .button:hover{
-background:#111;
-color:#fff;
-border:1px solid #fff;
+
+background:#1ebe5d;
+
 }
 
-.spinner{
-margin:20px auto;
-border:3px solid #222;
-border-top:3px solid #fff;
-border-radius:50%;
-width:28px;
-height:28px;
-animation:spin 1s linear infinite;
-}
+.footer{
 
-@keyframes spin{
-100%{transform:rotate(360deg);}
+margin-top:15px;
+font-size:12px;
+color:#666;
+
 }
 
 </style>
 
-<script>
-
-var phone="971507383054";
-var seconds=5;
-
-function updateTimer(){
-
-document.getElementById("timer").innerHTML=seconds;
-
-if(seconds==0){
-
-openWhatsApp();
-
-}else{
-
-seconds--;
-setTimeout(updateTimer,1000);
-
-}
-
-}
-
-function openWhatsApp(){
-
-var isMobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-if(isMobile){
-
-window.location.href="whatsapp://send?phone="+phone;
-
-setTimeout(function(){
-
-window.location.href="https://wa.me/"+phone;
-
-},1500);
-
-}else{
-
-window.location.href="https://web.whatsapp.com/send?phone="+phone;
-
-}
-
-}
-
-</script>
-
 </head>
 
-<body onload="updateTimer()">
+<body>
 
-<div class="container">
+<div class="card">
 
-<div class="title">
-Redirecting to WhatsApp
+<img class="profile"
+src="https://ik.imagekit.io/f8dc2modt/IMG_20260208_235950.jpg">
+
+<div class="name">
+
+Sekandar Samadi
+
+<span class="badge">✔</span>
+
 </div>
 
-<div class="subtitle">
-Redirecting to The Mr.Sekandar official WhatsApp app chat
+<div class="role">
+
+Entrepreneur & Developer
+
 </div>
 
-<div class="spinner"></div>
+<div class="info">
 
-<div id="timer" class="timer">
-5
-</div>
+<b>Live in:</b> Dubai<br>
 
-<div class="subtitle">
-seconds remaining
-</div>
+<b>Citizen of:</b> Afghanistan<br>
 
-<a class="button" onclick="openWhatsApp()">
-Open Now
+<b>Languages:</b><br>
+German • Chinese • Urdu<br>
+Persian • English • Pashto<br><br>
+
+<b>Business:</b><br>
+
+<a class="business"
+href="https://uaebazzar.shop">
+
+UAE BAZZAR SHOP
+
 </a>
+
+</div>
+
+<a class="button"
+href="whatsapp://send?phone=971507383054">
+
+Chat on WhatsApp
+
+</a>
+
+<div class="footer">
+
+Official WhatsApp Contact
+
+</div>
 
 </div>
 
